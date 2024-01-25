@@ -24,6 +24,7 @@ def password_generator():
     shuffle(password_list)
 
     password = "".join(password_list)
+    password_entry.delete(0, END)
     password_entry.insert(0, password)
     pyperclip.copy(password)
 
@@ -55,6 +56,10 @@ def save_password():
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
+window.title("Password Manager")
+window.config(padx=40, pady=40)
+
+# Canvas
 canvas = Canvas(height=200, width=200)
 logo_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_img)
@@ -72,7 +77,7 @@ password_label.grid(column=0, row=3)
 website_entry = Entry(width=40)
 website_entry.focus()
 email_entry = Entry(width=40)
-email_entry.insert(0, "angela@gmail.com")
+email_entry.insert(0, "me@gmail.com")
 password_entry = Entry(width=19)
 website_entry.grid(column=1, row=1, columnspan=2)
 email_entry.grid(column=1, row=2, columnspan=2)
